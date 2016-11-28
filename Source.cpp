@@ -152,7 +152,7 @@ struct color {
 	color(float v) { r = g = b = CUT(v); }
 };
 //definicje kolorow
-color black(0.0f),
+/*color black(0.0f),
 grey(0.9f),
 white(1.0f),
 red(0.95f, 0.32f, 0.23f),
@@ -160,6 +160,7 @@ green(0.71f, 0.89f, 0.1f),
 blue(0.19f, 0.77f, 0.98f),
 darkBlue(0.04f, 0.42f, 0.5f),
 yellow(1.0f, 0.98f, 0.74f);
+*/
 //OPERACJE NA KOLORACH
 //czy kolor jest czarny?
 inline bool isBlack(color::i c)
@@ -219,25 +220,32 @@ struct hit {
 	hit() : t(undefined) {}
 };
 //OBIEKTY
+struct primitives {
+	vec3 location;
+};
 struct object {
 	string name;
 	vec3 location;
+	vector <primitives> content;
 	object() {};
 	object(string nazwa, vec3 lokalizacja) :name(nazwa), location(lokalizacja) {}
 
 };
-struct sphere: object 
-{
+struct sphere : primitives{
 	float radius;
-
-
-	sphere(string nazwa, vec3 lokalizacja, float promien) : radius(promien) { location = lokalizacja; name = nazwa; }
+	sphere(vec3 lokalizacja, float promien) : radius(promien) { location = lokalizacja;}
 };
-struct triangle: object
+struct triangle :primitives
 {
-	
+	vec3 * wierzcholki = new vec3[3];
+	triangle(vec3 wierzcholki2[3]) {
+		wierzcholki[0]  = wierzcholki2[0];
+		wierzcholki[1] = wierzcholki2[1];
+		wierzcholki[2] = wierzcholki2[2];
+}
 
 };
+
 //kamera
 struct camera:object
 {
@@ -255,7 +263,7 @@ struct camera:object
 				vec3 zrodlo(location.x + i, location.y + j, location.z);
 				vec3 kierunek(0, 1, 0);
 				unitise(kierunek);
-				ray promien(zrodlo, kierunek );
+				ray promien(zrodlo, kierunek);
 			}
 		}
 	}
@@ -280,9 +288,5 @@ struct scene
 
 int main()
 {
-	scene scena;
-	vec3 wektorek(1, 1, 1);
-	sphere sferka("sfera", wektorek, 12);
 
-	scena.obiekty.push_back(sferka);
 }
