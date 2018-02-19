@@ -27,7 +27,7 @@ typedef unsigned int nat;
 #define sizex 1000
 #define sizey 500
 #define maxDepth 3
-#drobna zmiana
+#drobna koniec zmiany 
 COLORREF *  bitmap = new COLORREF[resolutionX*resolutionY];
 inline float uRand() { return (fl(rand()) / fl(RAND_MAX)); }
 int get_order(int x, int y)
