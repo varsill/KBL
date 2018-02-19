@@ -27,7 +27,7 @@ typedef unsigned int nat;
 #define sizex 1000
 #define sizey 500
 #define maxDepth 3
-#drobna koniec zmiany 
+#git zmiana! Koniec zmiany i nie tylko xD
 COLORREF *  bitmap = new COLORREF[resolutionX*resolutionY];
 inline float uRand() { return (fl(rand()) / fl(RAND_MAX)); }
 int get_order(int x, int y)
@@ -41,7 +41,7 @@ struct vec2 {
 
 	vec2(float u, float v) : u(u), v(v) {}
 	vec2() { u = v = 0.0f; }
-}; 
+};
 // długość wektora 2d
 inline float length(vec2::i w)
 {
@@ -78,7 +78,7 @@ struct vec3 {
 		float newLen = len / sqrt(x*x + y*y + z*z);
 		x *= newLen; y *= newLen; z *= newLen;
 	}
-	
+
 };
 	//OPERACJE
 	//dodawanie
@@ -220,7 +220,7 @@ struct material {
 	bool hasDrMap;
 	bool hasNormalMap;
 
-	
+
 };
 
 
@@ -251,9 +251,9 @@ struct triangle {
 	triangle(vec3 pos1, vec3 pos2, vec3 pos3):v1(pos1), v2(pos2), v3(pos3){
 		N = uCrossProd(v2 - v1, v3 - v1);
 		d = -dotProd(N, v1);
-	
+
 	}
-		
+
 						// konstruktory
 };
 struct hit {
@@ -333,12 +333,12 @@ struct camera:object
 				hit(i, j, 0);
 			}
 		}
-	
-		
+
+
 	}
 	void inline hit(int i, int j, int depth)
 	{
-		
+
 		vec3 current_location = location + vec3(-(resolutionX / 2), resolutionY / 2, 0) + vec3(i, -j, distance)+vec3(uRand(), uRand(), uRand());
 		vec3 dir = unitise(current_location - location);
 		ray r(current_location, dir);
@@ -356,11 +356,11 @@ struct camera:object
 		*(bitmap + get_order(i, j)) = RGB(255, 255, 255);
 		hit(i, j, depth + 1);
 		return;
-		
-		
 
-		
-		
+
+
+
+
 
 	}
 };
@@ -405,7 +405,7 @@ BYTE* getPixArray(HBITMAP hBitmap)
 
 void aktualizuj(HDC ddc)
 {
-	
+
 	//
 	//
 	BITMAP * bmInfo;
@@ -489,18 +489,18 @@ void find_viewport(scene * scn, COLORREF * tab)
 			vec2 pos = viewporting(scn->objects[i].vertexes[i], scn->cameras[0], tab );
 		}
 	}
-	
+
 }
 */
 /*int main()
 {
-	
+
 	HWND console = GetConsoleWindow();
 	HDC hdc = GetDC(console);
 	for (int i = 0; i < 10000; i++) {
 		find_viewport(vec3(i, i, i), 1, hdc);
 	}
-	
+
 
 	system("PAUSE");
 
@@ -558,7 +558,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	g_hPrzycisk = CreateWindowEx(0, "BUTTON", "RENDER", WS_CHILD | WS_VISIBLE,
 		100, 100, 150, 30, hwnd, NULL, hInstance, NULL);
 
-	
+
 
 	ShowWindow(hwnd, nCmdShow); // Pokaż okienko...
 	UpdateWindow(hwnd);
@@ -575,7 +575,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 // OBSŁUGA ZDARZEŃ
 LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
-	
+
 	switch (msg)
 	{
 	case WM_CLOSE:
@@ -591,7 +591,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 		HDC hdc = GetDC(hwnd);
 		camera cam("kamerka", vec3(-200,0 , 0 ), 2000, 1000, 100);
 		cam.turn_on();
-		
+
 		aktualizuj(hdc);
 		break;
 	}
