@@ -1,4 +1,5 @@
 #pragma once
+#ok dodajmy cos
 struct vec3 {
 	typedef const vec3& i;
 	typedef vec3& io;
