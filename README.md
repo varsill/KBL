@@ -1,2 +1,1 @@
-Plik do czytania :>
-Trololololo
+Prosty silnik graficzny bazujący na Backward RayTracing. 
